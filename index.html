@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammad Tbakhi — Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --surface2: #1a1a24;
+    --border: rgba(255,255,255,0.07); --border-hover: rgba(255,255,255,0.15);
+    --text: #f0eee8; --muted: #888;
+    --accent1: #c8f53e; --accent2: #5b8cff;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+  body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events: none; z-index: 100; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2.5rem; position: relative; z-index: 1; }
+  .orb { position: fixed; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0; }
+  .orb1 { width: 500px; height: 500px; background: rgba(200,245,62,0.035); top: -150px; right: -150px; }
+  .orb2 { width: 400px; height: 400px; background: rgba(91,140,255,0.04); bottom: 0; left: -150px; }
+
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 2rem 0; border-bottom: 1px solid var(--border); animation: fadeDown 0.6s ease both; }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: -0.02em; color: var(--text); }
+  .nav-logo span { color: var(--accent1); }
+  .nav-right { display: flex; align-items: center; gap: 2rem; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { font-size: 0.8rem; font-family: 'Syne', sans-serif; font-weight: 700; color: #0a0a0f; background: var(--accent1); padding: 8px 18px; border-radius: 100px; text-decoration: none; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.85; }
+
+  .hero { padding: 7rem 0 4rem; animation: fadeUp 0.8s ease 0.1s both; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 2rem; font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+  .hero-eyebrow::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent1); animation: pulse 2s infinite; }
+  .hero-name { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 7vw, 5.2rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 1rem; }
+  .hero-name .last { display: block; color: transparent; -webkit-text-stroke: 1px rgba(240,238,232,0.35); }
+  .hero-role { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 500; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 12px; }
+  .hero-role::before { content: ''; width: 28px; height: 1px; background: var(--muted); }
+  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 480px; line-height: 1.75; font-weight: 300; margin-bottom: 3rem; }
+  .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent1); color: #0a0a0f; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; padding: 14px 28px; border-radius: 100px; border: none; cursor: pointer; text-decoration: none; transition: transform 0.2s, opacity 0.2s; }
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text); font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.88rem; padding: 13px 24px; border-radius: 100px; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: border-color 0.2s; }
+  .btn-secondary:hover { border-color: var(--border-hover); }
+
+  .stats-bar { display: flex; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 4rem 0; animation: fadeUp 0.8s ease 0.2s both; }
+  .stat { flex: 1; padding: 1.5rem 2rem; border-right: 1px solid var(--border); transition: background 0.2s; }
+  .stat:last-child { border-right: none; }
+  .stat:hover { background: rgba(255,255,255,0.02); }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 4px; }
+  .stat-num.g { color: var(--accent1); }
+  .stat-label { font-size: 0.78rem; color: var(--muted); }
+
+  .section { margin-bottom: 5rem; }
+  .section-header { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2rem; }
+  .section-label { font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+
+  .projects { display: flex; flex-direction: column; gap: 1.5rem; }
+  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; transition: border-color 0.3s, transform 0.3s; animation: fadeUp 0.8s ease both; }
+  .project-card:nth-child(1) { animation-delay: 0.3s; }
+  .project-card:nth-child(2) { animation-delay: 0.4s; }
+  .project-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+  .card-accent { height: 3px; }
+  .erp .card-accent { background: linear-gradient(90deg, var(--accent1) 0%, transparent 70%); }
+  .animated .card-accent { background: linear-gradient(90deg, var(--accent2) 0%, transparent 70%); }
+
+  .card-gallery { position: relative; background: #0d0d14; border-bottom: 1px solid var(--border); overflow: hidden; height: 260px; }
+  .gallery-track { display: flex; height: 100%; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+  .gallery-slide { flex-shrink: 0; width: 100%; height: 100%; overflow: hidden; }
+  .gallery-slide img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+  .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 60%, rgba(19,19,26,0.8) 100%); pointer-events: none; }
+  .gallery-nav { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 2; }
+  .gallery-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.2s, transform 0.2s; border: none; padding: 0; }
+  .gallery-dot.active { background: var(--accent1); transform: scale(1.3); }
+  .gallery-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; background: rgba(19,19,26,0.8); border: 1px solid var(--border); border-radius: 50%; color: var(--text); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; z-index: 2; transition: background 0.2s, border-color 0.2s; }
+  .gallery-btn:hover { background: rgba(200,245,62,0.15); border-color: var(--accent1); }
+  .gallery-btn.prev { left: 14px; }
+  .gallery-btn.next { right: 14px; }
+  .gallery-counter { position: absolute; top: 14px; right: 14px; background: rgba(19,19,26,0.75); border: 1px solid var(--border); border-radius: 100px; padding: 4px 12px; font-size: 0.72rem; color: var(--muted); z-index: 2; font-family: 'Syne', sans-serif; font-weight: 700; }
+
+  .card-inner { padding: 2.5rem; }
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.5rem; }
+  .card-meta { display: flex; align-items: center; gap: 14px; }
+  .card-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+  .erp .card-icon { background: rgba(200,245,62,0.08); border: 1px solid rgba(200,245,62,0.15); }
+  .animated .card-icon { background: rgba(91,140,255,0.08); border: 1px solid rgba(91,140,255,0.15); }
+  .card-badge { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; display: block; margin-bottom: 4px; }
+  .erp .card-badge { background: rgba(200,245,62,0.1); color: #a8d42e; border: 1px solid rgba(200,245,62,0.18); }
+  .animated .card-badge { background: rgba(91,140,255,0.1); color: #7aa5ff; border: 1px solid rgba(91,140,255,0.18); }
+  .card-num { font-size: 0.7rem; color: var(--muted); font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: 0.1em; }
+
+  .card-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 0.8rem; line-height: 1.05; }
+  .card-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.7; font-weight: 300; max-width: 560px; margin-bottom: 1.5rem; }
+  .card-screens { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .screen-pill { display: flex; align-items: center; gap: 5px; font-size: 0.74rem; color: var(--muted); background: var(--surface2); padding: 5px 10px; border-radius: 8px; border: 1px solid var(--border); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+  .screen-pill:hover { border-color: var(--accent1); color: var(--accent1); }
+  .screen-pill .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; opacity: 0.6; }
+  .card-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+  .feature { font-size: 0.78rem; color: var(--muted); background: var(--surface2); padding: 5px 11px; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; gap: 5px; }
+  .feature::before { content: '↳'; font-size: 0.65rem; opacity: 0.45; }
+  .card-divider { height: 1px; background: var(--border); margin-bottom: 1.3rem; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag { font-size: 0.72rem; font-weight: 500; padding: 5px 12px; border-radius: 100px; }
+  .erp .tag { background: rgba(200,245,62,0.06); color: #96c228; border: 1px solid rgba(200,245,62,0.12); }
+  .animated .tag { background: rgba(91,140,255,0.06); color: #6e97f5; border: 1px solid rgba(91,140,255,0.12); }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
+  .skill-item { background: var(--surface); padding: 1.4rem 1rem; text-align: center; transition: background 0.2s; cursor: default; }
+  .skill-item:hover { background: var(--surface2); }
+  .skill-icon { font-size: 1.6rem; margin-bottom: 8px; display: block; }
+  .skill-name { font-size: 0.8rem; color: var(--muted); transition: color 0.2s; }
+  .skill-item:hover .skill-name { color: var(--text); }
+
+  .contact-section { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .contact-left h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 0.5rem; }
+  .contact-left p { font-size: 0.9rem; color: var(--muted); font-weight: 300; }
+  .contact-info { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .contact-item { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .contact-item:hover { color: var(--text); }
+  .contact-item-icon { width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.78rem; color: var(--muted); }
+  .footer-copy strong { color: var(--text); font-weight: 500; }
+  .footer-right { font-size: 0.75rem; color: rgba(136,136,136,0.45); letter-spacing: 0.04em; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="container">
+  <nav>
+    <div class="nav-logo">MT<span>.</span></div>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="mailto:moetbakhi@gmail.com" class="nav-cta">Hire me</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Available for work</div>
+    <h1 class="hero-name">
+      <span>Mohammad</span>
+      <span class="last">Tbakhi</span>
+    </h1>
+    <div class="hero-role">Software Engineer</div>
+    <p class="hero-desc">I build enterprise-grade systems and immersive web experiences. From complex ERP platforms to pixel-perfect animated interfaces — I ship things that work and look great doing it.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">View projects <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="mailto:moetbakhi@gmail.com" class="btn-secondary">Get in touch</a>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num g">2</div><div class="stat-label">Projects shipped</div></div>
+    <div class="stat"><div class="stat-num">7+</div><div class="stat-label">Technologies</div></div>
+    <div class="stat"><div class="stat-num g">100%</div><div class="stat-label">Completion rate</div></div>
+    <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Lines of code</div></div>
+  </div>
+
+  <section class="section" id="work">
+    <div class="section-header"><span class="section-label">Selected work</span><div class="section-line"></div></div>
+    <div class="projects">
+
+      <div class="project-card erp">
+        <div class="card-accent"></div>
+        <div class="card-gallery" id="gallery">
+          <div class="gallery-track" id="erp-track">
+            <div class="gallery-slide"><img src="screenshot-dashboard.png" alt="ERP Dashboard" /></div>
+            <div class="gallery-slide"><img src="screenshot-projects.png" alt="ERP Projects" /></div>
+            <div class="gallery-slide"><img src="screenshot-invoices.png" alt="ERP Invoices" /></div>
+            <div class="gallery-slide"><img src="screenshot-tasks.png" alt="ERP Tasks" /></div>
+            <div class="gallery-slide"><img src="screenshot-requests.png" alt="ERP Requests" /></div>
+            <div class="gallery-slide"><img src="screenshot-newproject.png" alt="New Project Form" /></div>
+          </div>
+          <div class="gallery-overlay"></div>
+          <button class="gallery-btn prev" onclick="changeSlide('erp',-1)">&#8592;</button>
+          <button class="gallery-btn next" onclick="changeSlide('erp',1)">&#8594;</button>
+          <div class="gallery-counter"><span id="erp-num">1</span> / 6</div>
+          <div class="gallery-nav" id="erp-dots"></div>
+        </div>
+        <div class="card-inner">
+          <div class="card-header">
+            <div class="card-meta">
+              <div class="card-icon">⚙️</div>
+              <div>
+                <span class="card-badge">Enterprise · Cambridge ERP</span>
+                <span class="card-num">Project 01</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-title">ERP System</div>
+          <p class="card-desc">A full-featured Enterprise Resource Planning platform built for Cambridge Engineering Consultants. Unifies HR, finance, project management, and operations in a single, bilingual (EN/AR) system.</p>
+          <div class="card-screens">
+            <span class="screen-pill" onclick="goToSlide('erp',0)"><span class="dot"></span>Dashboard</span>
+            <span class="screen-pill" onclick="goToSlide('erp',1)"><span class="dot"></span>Projects</span>
+            <span class="screen-pill" onclick="goToSlide('erp',2)"><span class="dot"></span>Invoices</span>
+            <span class="screen-pill" onclick="goToSlide('erp',3)"><span class="dot"></span>Tasks & KPI</span>
+            <span class="screen-pill" onclick="goToSlide('erp',4)"><span class="dot"></span>Requests</span>
+            <span class="screen-pill" onclick="goToSlide('erp',5)"><span class="dot"></span>New Project</span>
+          </div>
+          <div class="card-features">
+            <span class="feature">HR Management</span>
+            <span class="feature">Financial Tracking</span>
+            <span class="feature">Invoices & Billing</span>
+            <span class="feature">Proposals</span>
+            <span class="feature">Project Management</span>
+            <span class="feature">Attendance System</span>
+            <span class="feature">Leave Requests</span>
+            <span class="feature">KPI Tracking</span>
+            <span class="feature">Dark Mode</span>
+            <span class="feature">EN / AR Bilingual</span>
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-tags">
+            <span class="tag">React</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card animated">
+        <div class="card-accent"></div>
+        <div class="card-gallery">
+          <div class="gallery-track" id="anim-track">
+            <div class="gallery-slide"><img src="anim-landing.png" alt="Loading screen" /></div>
+            <div class="gallery-slide"><img src="anim-hero.png" alt="Hero section" /></div>
+            <div class="gallery-slide"><img src="anim-services.png" alt="Services" /></div>
+            <div class="gallery-slide"><img src="anim-footer.png" alt="Footer / CTA" /></div>
+          </div>
+          <div class="gallery-overlay"></div>
+          <button class="gallery-btn prev" onclick="changeSlide('anim',-1)">&#8592;</button>
+          <button class="gallery-btn next" onclick="changeSlide('anim',1)">&#8594;</button>
+          <div class="gallery-counter"><span id="anim-num">1</span> / 4</div>
+          <div class="gallery-nav" id="anim-dots"></div>
+        </div>
+        <div class="card-inner">
+          <div class="card-header">
+            <div class="card-meta">
+              <div class="card-icon">✨</div>
+              <div>
+                <span class="card-badge">Frontend · Cambridge CEC</span>
+                <span class="card-num">Project 02</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-title">Animated Landing Page</div>
+          <p class="card-desc">A visually immersive, motion-driven website for Cambridge Engineering Consultants. Features a dramatic loading sequence, grid-based layouts, scroll-triggered animations, and a dark/light split design — built to impress from the first frame.</p>
+          <div class="card-screens">
+            <span class="screen-pill" onclick="goToSlide('anim',0)"><span class="dot"></span>Loading screen</span>
+            <span class="screen-pill" onclick="goToSlide('anim',1)"><span class="dot"></span>Hero</span>
+            <span class="screen-pill" onclick="goToSlide('anim',2)"><span class="dot"></span>Services</span>
+            <span class="screen-pill" onclick="goToSlide('anim',3)"><span class="dot"></span>Footer / CTA</span>
+          </div>
+          <div class="card-features">
+            <span class="feature">Animated loading sequence</span>
+            <span class="feature">Scroll-triggered reveals</span>
+            <span class="feature">Dark & light sections</span>
+            <span class="feature">Ticker / marquee strip</span>
+            <span class="feature">Responsive layout</span>
+            <span class="feature">Engineering grid aesthetic</span>
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-tags">
+            <span class="tag">Next.js</span><span class="tag">React</span>
+            <span class="tag">JavaScript</span><span class="tag">CSS Motion</span><span class="tag">Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-header"><span class="section-label">Skills & tools</span><div class="section-line"></div></div>
+    <div class="skills-grid">
+      <div class="skill-item"><span class="skill-icon">⚛️</span><span class="skill-name">React</span></div>
+      <div class="skill-item"><span class="skill-icon">▲</span><span class="skill-name">Next.js</span></div>
+      <div class="skill-item"><span class="skill-icon">⚡</span><span class="skill-name">JavaScript</span></div>
+      <div class="skill-item"><span class="skill-icon">🗄️</span><span class="skill-name">Supabase</span></div>
+      <div class="skill-item"><span class="skill-icon">🐘</span><span class="skill-name">PostgreSQL</span></div>
+      <div class="skill-item"><span class="skill-icon">🌙</span><span class="skill-name">Lua</span></div>
+      <div class="skill-item"><span class="skill-icon">🌿</span><span class="skill-name">Git</span></div>
+      <div class="skill-item"><span class="skill-icon">🐙</span><span class="skill-name">GitHub</span></div>
+    </div>
+  </section>
+
+  <div class="contact-section" id="contact">
+    <div class="contact-left">
+      <h2>Let's work together.</h2>
+      <p>Open to new opportunities — feel free to reach out.</p>
+    </div>
+    <div class="contact-info">
+      <a href="mailto:moetbakhi@gmail.com" class="contact-item"><div class="contact-item-icon">✉️</div>moetbakhi@gmail.com</a>
+      <a href="tel:+962790686162" class="contact-item"><div class="contact-item-icon">📞</div>+962 790 686 162</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-copy">Designed & built by <strong>Mohammad Tbakhi</strong></div>
+    <div class="footer-right">Software Engineer · Jordan</div>
+  </footer>
+</div>
+
+<script>
+  const galleries = {
+    erp: { current: 0, total: 6, timer: null },
+    anim: { current: 0, total: 4, timer: null }
+  };
+  function initGallery(id) {
+    const g = galleries[id];
+    const dots = document.getElementById(id + '-dots');
+    for (let i = 0; i < g.total; i++) {
+      const d = document.createElement('button');
+      d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => goToSlide(id, i);
+      dots.appendChild(d);
+    }
+    updateGallery(id);
+    setInterval(() => changeSlide(id, 1), 3500);
+  }
+  function updateGallery(id) {
+    const g = galleries[id];
+    const track = document.getElementById(id + '-track');
+    const num = document.getElementById(id + '-num');
+    track.style.transform = 'translateX(-' + (g.current * 100) + '%)';
+    num.textContent = g.current + 1;
+    document.querySelectorAll('#' + id + '-dots .gallery-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === g.current);
+    });
+  }
+  function changeSlide(id, dir) {
+    const g = galleries[id];
+    g.current = (g.current + dir + g.total) % g.total;
+    updateGallery(id);
+  }
+  function goToSlide(id, i) { galleries[id].current = i; updateGallery(id); }
+  initGallery('erp');
+  initGallery('anim');
+</script>
+</body>
+</html>
