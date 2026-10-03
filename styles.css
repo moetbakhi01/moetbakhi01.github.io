@@ -293,7 +293,7 @@ button { font: inherit; color: inherit; }
 .lifly .card-badge { background: linear-gradient(90deg, rgba(183,156,255,.2), rgba(255,158,203,.14)); color: #e3d8ff; border-color: rgba(183,156,255,.35); }
 
 .stage-wrap { container-type: inline-size; min-width: 0; }
-.stage { --pw: clamp(130px, 38cqw, 215px); position: relative; height: calc(var(--pw) * 2.55); perspective: 1200px; }
+.stage { --pw: clamp(110px, 38cqw, 215px); position: relative; height: calc(var(--pw) * 2.55); perspective: 1200px; }
 .stage-glow { position: absolute; left: 50%; top: 50%; width: 120%; aspect-ratio: 1; transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(183,156,255,.38), rgba(255,158,203,.14) 40%, transparent 68%); animation: glow 7s ease-in-out infinite; pointer-events: none; }
 .stage-ring { position: absolute; left: 50%; top: 50%; border-radius: 50%; border: 1px solid rgba(255,255,255,.08); transform: translate(-50%, -50%); pointer-events: none; }
@@ -343,10 +343,11 @@ button { font: inherit; color: inherit; }
 .chip { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; padding: 8px 14px; border-radius: var(--r-pill); font-size: 0.74rem; font-weight: 500;
   background: rgba(20,20,34,.62); border: 1px solid rgba(255,255,255,.14); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 12px 30px -10px rgba(0,0,0,.6); }
 .chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent1); box-shadow: 0 0 10px var(--accent1); }
-.c1 { left: 14%; top: 14%; }
-.c2 { left: 86%; top: 24%; } .c2 .chip i { background: var(--accent4); box-shadow: 0 0 10px var(--accent4); }
-.c3 { left: 84%; top: 82%; } .c3 .chip i { background: var(--accent3); box-shadow: 0 0 10px var(--accent3); }
-.c4 { left: 18%; top: 88%; } .c4 .chip i { background: var(--accent2); box-shadow: 0 0 10px var(--accent2); }
+/* chips sit in the free corners above/below the side phones so they never cover a screen */
+.c1 { left: 16%; top: 6%; }
+.c2 { left: 83%; top: 6%; } .c2 .chip i { background: var(--accent4); box-shadow: 0 0 10px var(--accent4); }
+.c3 { left: 85%; top: 95%; } .c3 .chip i { background: var(--accent3); box-shadow: 0 0 10px var(--accent3); }
+.c4 { left: 17%; top: 95%; } .c4 .chip i { background: var(--accent2); box-shadow: 0 0 10px var(--accent2); }
 
 /* 8. Skills --------------------------------------------------------------- */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 12px; }
@@ -445,7 +446,7 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 2.5rem; display: f
   .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .chip { font-size: 0.68rem; padding: 6px 11px; }
-  .c1 { left: 20%; } .c4 { left: 22%; }
+  .c1 { left: 19%; top: 3.5%; } .c4 { left: 24%; }
   .lifly .card-title { font-size: 2.4rem; }
 }
 
