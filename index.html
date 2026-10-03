@@ -4,356 +4,398 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mohammad Tbakhi — Software Engineer</title>
+<meta name="description" content="Mohammad Tbakhi — Software Engineer · Mobile & Full-Stack. Lifly, a Cambridge Engineering Consultants ERP, and an animated landing page.">
+<meta name="theme-color" content="#0b0b14">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2314141f'/%3E%3Ctext x='9' y='42' font-family='Arial' font-weight='800' font-size='30' fill='%23f2efe9'%3EMT%3C/text%3E%3Ccircle cx='53' cy='41' r='4' fill='%23cdf56a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f; --surface: #13131a; --surface2: #1a1a24;
-    --border: rgba(255,255,255,0.07); --border-hover: rgba(255,255,255,0.15);
-    --text: #f0eee8; --muted: #888;
-    --accent1: #c8f53e; --accent2: #5b8cff;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
-  body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events: none; z-index: 100; }
-  .container { max-width: 960px; margin: 0 auto; padding: 0 2.5rem; position: relative; z-index: 1; }
-  .orb { position: fixed; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0; }
-  .orb1 { width: 500px; height: 500px; background: rgba(200,245,62,0.035); top: -150px; right: -150px; }
-  .orb2 { width: 400px; height: 400px; background: rgba(91,140,255,0.04); bottom: 0; left: -150px; }
-
-  nav { display: flex; align-items: center; justify-content: space-between; padding: 2rem 0; border-bottom: 1px solid var(--border); animation: fadeDown 0.6s ease both; }
-  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: -0.02em; color: var(--text); }
-  .nav-logo span { color: var(--accent1); }
-  .nav-right { display: flex; align-items: center; gap: 2rem; }
-  .nav-links { display: flex; gap: 2rem; }
-  .nav-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta { font-size: 0.8rem; font-family: 'Syne', sans-serif; font-weight: 700; color: #0a0a0f; background: var(--accent1); padding: 8px 18px; border-radius: 100px; text-decoration: none; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
-
-  .hero { padding: 7rem 0 4rem; animation: fadeUp 0.8s ease 0.1s both; }
-  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 2rem; font-size: 0.78rem; color: var(--accent1); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
-  .hero-eyebrow::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent1); animation: pulse 2s infinite; }
-  .hero-name { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 7vw, 5.2rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 1rem; }
-  .hero-name .last { display: block; color: transparent; -webkit-text-stroke: 1px rgba(240,238,232,0.35); }
-  .hero-role { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 500; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 12px; }
-  .hero-role::before { content: ''; width: 28px; height: 1px; background: var(--muted); }
-  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 480px; line-height: 1.75; font-weight: 300; margin-bottom: 3rem; }
-  .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent1); color: #0a0a0f; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; padding: 14px 28px; border-radius: 100px; border: none; cursor: pointer; text-decoration: none; transition: transform 0.2s, opacity 0.2s; }
-  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
-  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text); font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.88rem; padding: 13px 24px; border-radius: 100px; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: border-color 0.2s; }
-  .btn-secondary:hover { border-color: var(--border-hover); }
-
-  .stats-bar { display: flex; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 4rem 0; animation: fadeUp 0.8s ease 0.2s both; }
-  .stat { flex: 1; padding: 1.5rem 2rem; border-right: 1px solid var(--border); transition: background 0.2s; }
-  .stat:last-child { border-right: none; }
-  .stat:hover { background: rgba(255,255,255,0.02); }
-  .stat-num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 4px; }
-  .stat-num.g { color: var(--accent1); }
-  .stat-label { font-size: 0.78rem; color: var(--muted); }
-
-  .section { margin-bottom: 5rem; }
-  .section-header { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2rem; }
-  .section-label { font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-  .section-line { flex: 1; height: 1px; background: var(--border); }
-
-  .projects { display: flex; flex-direction: column; gap: 1.5rem; }
-  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; transition: border-color 0.3s, transform 0.3s; animation: fadeUp 0.8s ease both; }
-  .project-card:nth-child(1) { animation-delay: 0.3s; }
-  .project-card:nth-child(2) { animation-delay: 0.4s; }
-  .project-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
-  .card-accent { height: 3px; }
-  .erp .card-accent { background: linear-gradient(90deg, var(--accent1) 0%, transparent 70%); }
-  .animated .card-accent { background: linear-gradient(90deg, var(--accent2) 0%, transparent 70%); }
-
-  .card-gallery { position: relative; background: #0d0d14; border-bottom: 1px solid var(--border); overflow: hidden; height: 260px; }
-  .gallery-track { display: flex; height: 100%; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
-  .gallery-slide { flex-shrink: 0; width: 100%; height: 100%; overflow: hidden; }
-  .gallery-slide img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
-  .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 60%, rgba(19,19,26,0.8) 100%); pointer-events: none; }
-  .gallery-nav { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 2; }
-  .gallery-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.2s, transform 0.2s; border: none; padding: 0; }
-  .gallery-dot.active { background: var(--accent1); transform: scale(1.3); }
-  .gallery-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; background: rgba(19,19,26,0.8); border: 1px solid var(--border); border-radius: 50%; color: var(--text); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; z-index: 2; transition: background 0.2s, border-color 0.2s; }
-  .gallery-btn:hover { background: rgba(200,245,62,0.15); border-color: var(--accent1); }
-  .gallery-btn.prev { left: 14px; }
-  .gallery-btn.next { right: 14px; }
-  .gallery-counter { position: absolute; top: 14px; right: 14px; background: rgba(19,19,26,0.75); border: 1px solid var(--border); border-radius: 100px; padding: 4px 12px; font-size: 0.72rem; color: var(--muted); z-index: 2; font-family: 'Syne', sans-serif; font-weight: 700; }
-
-  .card-inner { padding: 2.5rem; }
-  .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.5rem; }
-  .card-meta { display: flex; align-items: center; gap: 14px; }
-  .card-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
-  .erp .card-icon { background: rgba(200,245,62,0.08); border: 1px solid rgba(200,245,62,0.15); }
-  .animated .card-icon { background: rgba(91,140,255,0.08); border: 1px solid rgba(91,140,255,0.15); }
-  .card-badge { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; display: block; margin-bottom: 4px; }
-  .erp .card-badge { background: rgba(200,245,62,0.1); color: #a8d42e; border: 1px solid rgba(200,245,62,0.18); }
-  .animated .card-badge { background: rgba(91,140,255,0.1); color: #7aa5ff; border: 1px solid rgba(91,140,255,0.18); }
-  .card-num { font-size: 0.7rem; color: var(--muted); font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: 0.1em; }
-
-  .card-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 0.8rem; line-height: 1.05; }
-  .card-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.7; font-weight: 300; max-width: 560px; margin-bottom: 1.5rem; }
-  .card-screens { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
-  .screen-pill { display: flex; align-items: center; gap: 5px; font-size: 0.74rem; color: var(--muted); background: var(--surface2); padding: 5px 10px; border-radius: 8px; border: 1px solid var(--border); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
-  .screen-pill:hover { border-color: var(--accent1); color: var(--accent1); }
-  .screen-pill .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; opacity: 0.6; }
-  .card-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
-  .feature { font-size: 0.78rem; color: var(--muted); background: var(--surface2); padding: 5px 11px; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; gap: 5px; }
-  .feature::before { content: '↳'; font-size: 0.65rem; opacity: 0.45; }
-  .card-divider { height: 1px; background: var(--border); margin-bottom: 1.3rem; }
-  .card-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-  .tag { font-size: 0.72rem; font-weight: 500; padding: 5px 12px; border-radius: 100px; }
-  .erp .tag { background: rgba(200,245,62,0.06); color: #96c228; border: 1px solid rgba(200,245,62,0.12); }
-  .animated .tag { background: rgba(91,140,255,0.06); color: #6e97f5; border: 1px solid rgba(91,140,255,0.12); }
-
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
-  .skill-item { background: var(--surface); padding: 1.4rem 1rem; text-align: center; transition: background 0.2s; cursor: default; }
-  .skill-item:hover { background: var(--surface2); }
-  .skill-icon { font-size: 1.6rem; margin-bottom: 8px; display: block; }
-  .skill-name { font-size: 0.8rem; color: var(--muted); transition: color 0.2s; }
-  .skill-item:hover .skill-name { color: var(--text); }
-
-  .contact-section { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem; }
-  .contact-left h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 0.5rem; }
-  .contact-left p { font-size: 0.9rem; color: var(--muted); font-weight: 300; }
-  .contact-info { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-  .contact-item { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .contact-item:hover { color: var(--text); }
-  .contact-item-icon { width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
-
-  footer { border-top: 1px solid var(--border); padding: 2rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-  .footer-copy { font-size: 0.78rem; color: var(--muted); }
-  .footer-copy strong { color: var(--text); font-weight: 500; }
-  .footer-right { font-size: 0.75rem; color: rgba(136,136,136,0.45); letter-spacing: 0.04em; }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-  @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
-</style>
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
+<script src="script.js" defer></script>
 </head>
 <body>
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="container">
-  <nav>
-    <div class="nav-logo">MT<span>.</span></div>
-    <div class="nav-right">
-      <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <a href="mailto:moetbakhi@gmail.com" class="nav-cta">Hire me</a>
-    </div>
-  </nav>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <section class="hero">
-    <div class="hero-eyebrow">Available for work</div>
-    <h1 class="hero-name">
-      <span>Mohammad</span>
-      <span class="last">Tbakhi</span>
+<!-- Ambient background -->
+<div class="bg" aria-hidden="true">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <span class="bg-grid"></span>
+</div>
+
+<header class="site-header" id="top">
+  <div class="container">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-logo" href="#top" aria-label="Mohammad Tbakhi — back to top">MT<span>.</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <div class="nav-links">
+          <a href="#work">Work</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a href="mailto:moetbakhi@gmail.com" class="nav-cta">Hire me</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+<main id="main">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="shapes" aria-hidden="true">
+      <span class="shape sh-ring"></span>
+      <span class="shape sh-square"></span>
+      <span class="shape sh-blob"></span>
+      <span class="shape sh-dot d1"></span>
+      <span class="shape sh-dot d2"></span>
+      <span class="shape sh-star">✦</span>
+      <span class="shape sh-star s2">✦</span>
+    </div>
+
+    <div class="hero-eyebrow rise" style="--i:0"><span class="pulse-dot" aria-hidden="true"></span>Available for work</div>
+    <h1 class="hero-name" id="hero-title">
+      <span class="line"><span class="rise-line" style="--i:1">Mohammad</span></span>
+      <span class="line last"><span class="rise-line" style="--i:2">Tbakhi</span></span>
     </h1>
-    <div class="hero-role">Software Engineer</div>
-    <p class="hero-desc">I build enterprise-grade systems and immersive web experiences. From complex ERP platforms to pixel-perfect animated interfaces — I ship things that work and look great doing it.</p>
-    <div class="hero-actions">
-      <a href="#work" class="btn-primary">View projects <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a href="mailto:moetbakhi@gmail.com" class="btn-secondary">Get in touch</a>
+    <div class="hero-role rise" style="--i:3">Software Engineer · Mobile &amp; <span class="nb">Full-Stack</span></div>
+    <p class="hero-desc rise" style="--i:4">I build enterprise-grade systems and immersive web experiences. From complex ERP platforms to pixel-perfect animated interfaces — I ship things that work and look great doing it.</p>
+    <div class="hero-actions rise" style="--i:5">
+      <a href="#work" class="btn btn-primary">View projects <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="mailto:moetbakhi@gmail.com" class="btn btn-secondary">Get in touch</a>
     </div>
   </section>
 
   <div class="stats-bar">
-    <div class="stat"><div class="stat-num g">2</div><div class="stat-label">Projects shipped</div></div>
-    <div class="stat"><div class="stat-num">7+</div><div class="stat-label">Technologies</div></div>
-    <div class="stat"><div class="stat-num g">100%</div><div class="stat-label">Completion rate</div></div>
-    <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Lines of code</div></div>
+    <div class="stat reveal" style="--d:0s"><div class="stat-num g">2</div><div class="stat-label">Projects shipped</div></div>
+    <div class="stat reveal" style="--d:.08s"><div class="stat-num">7+</div><div class="stat-label">Technologies</div></div>
+    <div class="stat reveal" style="--d:.16s"><div class="stat-num g">100%</div><div class="stat-label">Completion rate</div></div>
+    <div class="stat reveal" style="--d:.24s"><div class="stat-num">∞</div><div class="stat-label">Lines of code</div></div>
   </div>
 
-  <section class="section" id="work">
-    <div class="section-header"><span class="section-label">Selected work</span><div class="section-line"></div></div>
+  <section class="section" id="work" aria-labelledby="work-label">
+    <div class="section-header reveal"><h2 class="section-label" id="work-label">Selected work</h2><div class="section-line"></div></div>
     <div class="projects">
 
-      <div class="project-card erp">
-        <div class="card-accent"></div>
-        <div class="card-gallery" id="gallery">
-          <div class="gallery-track" id="erp-track">
-            <div class="gallery-slide"><img src="screenshot-dashboard.png" alt="ERP Dashboard" /></div>
-            <div class="gallery-slide"><img src="screenshot-projects.png" alt="ERP Projects" /></div>
-            <div class="gallery-slide"><img src="screenshot-invoices.png" alt="ERP Invoices" /></div>
-            <div class="gallery-slide"><img src="screenshot-tasks.png" alt="ERP Tasks" /></div>
-            <div class="gallery-slide"><img src="screenshot-requests.png" alt="ERP Requests" /></div>
-            <div class="gallery-slide"><img src="screenshot-newproject.png" alt="New Project Form" /></div>
-          </div>
-          <div class="gallery-overlay"></div>
-          <button class="gallery-btn prev" onclick="changeSlide('erp',-1)">&#8592;</button>
-          <button class="gallery-btn next" onclick="changeSlide('erp',1)">&#8594;</button>
-          <div class="gallery-counter"><span id="erp-num">1</span> / 6</div>
-          <div class="gallery-nav" id="erp-dots"></div>
-        </div>
-        <div class="card-inner">
-          <div class="card-header">
-            <div class="card-meta">
-              <div class="card-icon">⚙️</div>
-              <div>
-                <span class="card-badge">Enterprise · Cambridge ERP</span>
-                <span class="card-num">Project 01</span>
+      <!-- ===== Featured: Lifly ===== -->
+      <div class="reveal">
+        <article class="project-card lifly spot" aria-labelledby="lifly-title">
+          <div class="lifly-grid">
+            <div class="lifly-copy">
+              <div class="card-header">
+                <div class="card-meta">
+                  <div class="card-icon" aria-hidden="true">📱</div>
+                  <div>
+                    <span class="card-badge">★ Featured · Independent / Solo Project</span>
+                    <span class="card-num">Started January 1, 2026</span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="card-title" id="lifly-title">Lifly</h3>
+              <p class="card-desc">Lifly is an offline-capable iOS and Android application built with Expo, React Native and TypeScript, backed by NestJS and PostgreSQL, with an encrypted SQLite/SQLCipher local data layer and a dedicated synchronization architecture. Native Kotlin and Swift are used only where platform-specific functionality requires it.</p>
+              <div class="card-features">
+                <span class="feature">Offline-capable</span>
+                <span class="feature">iOS &amp; Android</span>
+                <span class="feature">Encrypted local data</span>
+                <span class="feature">Dedicated sync architecture</span>
+                <span class="feature">Native only where needed</span>
+              </div>
+              <div class="card-divider"></div>
+              <div class="card-tags">
+                <span class="tag">React Native</span>
+                <span class="tag">Expo</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">SQLite + SQLCipher</span>
+                <span class="tag">NestJS</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">REST / OpenAPI</span>
+                <span class="tag">Swift</span>
+                <span class="tag">Kotlin</span>
+                <span class="tag">Claude Code</span>
+              </div>
+            </div>
+
+            <!--
+              Device stage. The phone screens below are architecture cards built from the
+              stack described above — they are NOT product screenshots.
+              To use real Lifly screenshots, put <img src="lifly-1.png" alt="…"> inside a
+              .screen element (it will fill the screen) and remove its text content.
+            -->
+            <div class="stage-wrap">
+              <div class="stage" data-parallax role="img" aria-label="Three phone mockups showing Lifly's architecture: Expo and React Native on device, an encrypted SQLite/SQLCipher data layer, and sync with NestJS and PostgreSQL.">
+                <span class="stage-glow"></span>
+                <span class="stage-ring r1"></span>
+                <span class="stage-ring r2"></span>
+
+                <div class="layer p-left" style="--depth:10">
+                  <div class="float f2">
+                    <div class="phone" data-cycle data-offset="1200">
+                      <span class="phone-notch"></span>
+                      <div class="phone-screen">
+                        <div class="screen is-active">
+                          <span class="s-label">Platform</span>
+                          <strong class="s-title">Native where needed</strong>
+                          <ul class="s-rows">
+                            <li><i style="--c:255,158,203"></i>Swift</li>
+                            <li><i style="--c:183,156,255"></i>Kotlin</li>
+                          </ul>
+                        </div>
+                        <div class="screen">
+                          <span class="s-label">Tooling</span>
+                          <strong class="s-title">Built with</strong>
+                          <ul class="s-rows">
+                            <li><i style="--c:205,245,106"></i>Claude Code</li>
+                            <li><i style="--c:124,156,255"></i>TypeScript</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <span class="phone-bar"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="layer p-right" style="--depth:14">
+                  <div class="float f3">
+                    <div class="phone" data-cycle data-offset="2400">
+                      <span class="phone-notch"></span>
+                      <div class="phone-screen">
+                        <div class="screen is-active">
+                          <span class="s-label">Targets</span>
+                          <strong class="s-title">iOS &amp; Android</strong>
+                          <ul class="s-rows">
+                            <li><i style="--c:124,156,255"></i>Expo</li>
+                            <li><i style="--c:183,156,255"></i>React Native</li>
+                          </ul>
+                        </div>
+                        <div class="screen">
+                          <span class="s-label">Project</span>
+                          <strong class="s-title">Solo build</strong>
+                          <ul class="s-rows">
+                            <li><i style="--c:205,245,106"></i>Independent</li>
+                            <li><i style="--c:255,158,203"></i>Jan 1, 2026</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <span class="phone-bar"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="layer p-center" style="--depth:22">
+                  <div class="float f1">
+                    <div class="phone phone-main" data-cycle data-offset="0">
+                      <span class="phone-notch"></span>
+                      <div class="phone-screen">
+                        <div class="screen is-active">
+                          <span class="s-label">On device</span>
+                          <strong class="s-title">Offline-capable</strong>
+                          <ul class="s-rows">
+                            <li><i style="--c:124,156,255"></i>Expo</li>
+                            <li><i style="--c:183,156,255"></i>React Native</li>
+                            <li><i style="--c:205,245,106"></i>TypeScript</li>
+                          </ul>
+                        </div>
+                        <div class="screen">
+                          <span class="s-label">Local data layer</span>
+                          <strong class="s-title">Encrypted</strong>
+                          <svg class="s-lock" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="9" y="21" width="30" height="21" rx="7" fill="rgba(183,156,255,.18)" stroke="currentColor" stroke-width="2.2"/><path d="M16 21v-5a8 8 0 0 1 16 0v5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="24" cy="31" r="3" fill="currentColor"/></svg>
+                          <ul class="s-rows">
+                            <li><i style="--c:183,156,255"></i>SQLite + SQLCipher</li>
+                          </ul>
+                        </div>
+                        <div class="screen">
+                          <span class="s-label">Synchronization</span>
+                          <strong class="s-title">Synced</strong>
+                          <svg class="s-sync" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M38 20a15 15 0 0 0-26-6M10 28a15 15 0 0 0 26 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M12 6v8h8M36 42v-8h-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          <ul class="s-rows">
+                            <li><i style="--c:255,158,203"></i>NestJS</li>
+                            <li><i style="--c:124,156,255"></i>PostgreSQL</li>
+                            <li><i style="--c:205,245,106"></i>REST / OpenAPI</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <span class="phone-bar"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="layer chip-layer c1" style="--depth:34"><span class="chip float f4"><i></i>Offline-capable</span></div>
+                <div class="layer chip-layer c2" style="--depth:28"><span class="chip float f5"><i></i>SQLCipher</span></div>
+                <div class="layer chip-layer c3" style="--depth:30"><span class="chip float f6"><i></i>NestJS</span></div>
+                <div class="layer chip-layer c4" style="--depth:38"><span class="chip float f7"><i></i>iOS + Android</span></div>
               </div>
             </div>
           </div>
-          <div class="card-title">ERP System</div>
-          <p class="card-desc">A full-featured Enterprise Resource Planning platform built for Cambridge Engineering Consultants. Unifies HR, finance, project management, and operations in a single, bilingual (EN/AR) system.</p>
-          <div class="card-screens">
-            <span class="screen-pill" onclick="goToSlide('erp',0)"><span class="dot"></span>Dashboard</span>
-            <span class="screen-pill" onclick="goToSlide('erp',1)"><span class="dot"></span>Projects</span>
-            <span class="screen-pill" onclick="goToSlide('erp',2)"><span class="dot"></span>Invoices</span>
-            <span class="screen-pill" onclick="goToSlide('erp',3)"><span class="dot"></span>Tasks & KPI</span>
-            <span class="screen-pill" onclick="goToSlide('erp',4)"><span class="dot"></span>Requests</span>
-            <span class="screen-pill" onclick="goToSlide('erp',5)"><span class="dot"></span>New Project</span>
-          </div>
-          <div class="card-features">
-            <span class="feature">HR Management</span>
-            <span class="feature">Financial Tracking</span>
-            <span class="feature">Invoices & Billing</span>
-            <span class="feature">Proposals</span>
-            <span class="feature">Project Management</span>
-            <span class="feature">Attendance System</span>
-            <span class="feature">Leave Requests</span>
-            <span class="feature">KPI Tracking</span>
-            <span class="feature">Dark Mode</span>
-            <span class="feature">EN / AR Bilingual</span>
-          </div>
-          <div class="card-divider"></div>
-          <div class="card-tags">
-            <span class="tag">React</span>
-            <span class="tag">Next.js</span>
-            <span class="tag">Supabase</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Git</span>
-          </div>
-        </div>
+        </article>
       </div>
 
-      <div class="project-card animated">
-        <div class="card-accent"></div>
-        <div class="card-gallery">
-          <div class="gallery-track" id="anim-track">
-            <div class="gallery-slide"><img src="anim-landing.png" alt="Loading screen" /></div>
-            <div class="gallery-slide"><img src="anim-hero.png" alt="Hero section" /></div>
-            <div class="gallery-slide"><img src="anim-services.png" alt="Services" /></div>
-            <div class="gallery-slide"><img src="anim-footer.png" alt="Footer / CTA" /></div>
+      <!-- ===== Project 01: ERP ===== -->
+      <div class="reveal">
+        <article class="project-card erp spot" aria-labelledby="erp-title">
+          <div class="card-accent"></div>
+          <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="card-gallery" data-gallery data-parallax tabindex="0" role="region" aria-roledescription="carousel" aria-label="ERP System screenshots">
+            <div class="gallery-track">
+              <div class="gallery-slide"><img src="screenshot-dashboard.png" alt="ERP Dashboard" width="1727" height="911" loading="lazy" decoding="async" /></div>
+              <div class="gallery-slide"><img src="screenshot-projects.png" alt="ERP Projects" width="1668" height="943" loading="lazy" decoding="async" /></div>
+              <div class="gallery-slide"><img src="screenshot-invoices.png" alt="ERP Invoices" width="1793" height="877" loading="lazy" decoding="async" /></div>
+              <div class="gallery-slide"><img src="screenshot-tasks.png" alt="ERP Tasks" width="1679" height="683" loading="lazy" decoding="async" /></div>
+              <div class="gallery-slide"><img src="screenshot-requests.png" alt="ERP Requests" width="1658" height="422" loading="lazy" decoding="async" /></div>
+              <div class="gallery-slide"><img src="screenshot-newproject.png" alt="New Project Form" width="720" height="698" loading="lazy" decoding="async" /></div>
+            </div>
+            <div class="gallery-overlay"></div>
+            <button type="button" class="gallery-btn prev" data-dir="-1" aria-label="Previous screenshot">&#8592;</button>
+            <button type="button" class="gallery-btn next" data-dir="1" aria-label="Next screenshot">&#8594;</button>
+            <div class="gallery-counter" aria-live="polite"><span data-gallery-num>1</span> / <span data-gallery-total>6</span></div>
+            <div class="gallery-nav" data-gallery-dots></div>
           </div>
-          <div class="gallery-overlay"></div>
-          <button class="gallery-btn prev" onclick="changeSlide('anim',-1)">&#8592;</button>
-          <button class="gallery-btn next" onclick="changeSlide('anim',1)">&#8594;</button>
-          <div class="gallery-counter"><span id="anim-num">1</span> / 4</div>
-          <div class="gallery-nav" id="anim-dots"></div>
-        </div>
-        <div class="card-inner">
-          <div class="card-header">
-            <div class="card-meta">
-              <div class="card-icon">✨</div>
-              <div>
-                <span class="card-badge">Frontend · Cambridge CEC</span>
-                <span class="card-num">Project 02</span>
+          <div class="card-inner">
+            <div class="card-header">
+              <div class="card-meta">
+                <div class="card-icon" aria-hidden="true">⚙️</div>
+                <div>
+                  <span class="card-badge">Enterprise · Cambridge ERP</span>
+                  <span class="card-num">Project 01</span>
+                </div>
               </div>
             </div>
+            <h3 class="card-title" id="erp-title">ERP System</h3>
+            <p class="card-desc">A full-featured Enterprise Resource Planning platform built for Cambridge Engineering Consultants. Unifies HR, finance, project management, and operations in a single, bilingual (EN/AR) system.</p>
+            <div class="card-screens" role="group" aria-label="Jump to screenshot">
+              <button type="button" class="screen-pill" data-goto="0"><span class="dot"></span>Dashboard</button>
+              <button type="button" class="screen-pill" data-goto="1"><span class="dot"></span>Projects</button>
+              <button type="button" class="screen-pill" data-goto="2"><span class="dot"></span>Invoices</button>
+              <button type="button" class="screen-pill" data-goto="3"><span class="dot"></span>Tasks &amp; KPI</button>
+              <button type="button" class="screen-pill" data-goto="4"><span class="dot"></span>Requests</button>
+              <button type="button" class="screen-pill" data-goto="5"><span class="dot"></span>New Project</button>
+            </div>
+            <div class="card-features">
+              <span class="feature">HR Management</span>
+              <span class="feature">Financial Tracking</span>
+              <span class="feature">Invoices &amp; Billing</span>
+              <span class="feature">Proposals</span>
+              <span class="feature">Project Management</span>
+              <span class="feature">Attendance System</span>
+              <span class="feature">Leave Requests</span>
+              <span class="feature">KPI Tracking</span>
+              <span class="feature">Dark Mode</span>
+              <span class="feature">EN / AR Bilingual</span>
+            </div>
+            <div class="card-divider"></div>
+            <div class="card-tags">
+              <span class="tag">React</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Git</span>
+            </div>
           </div>
-          <div class="card-title">Animated Landing Page</div>
-          <p class="card-desc">A visually immersive, motion-driven website for Cambridge Engineering Consultants. Features a dramatic loading sequence, grid-based layouts, scroll-triggered animations, and a dark/light split design — built to impress from the first frame.</p>
-          <div class="card-screens">
-            <span class="screen-pill" onclick="goToSlide('anim',0)"><span class="dot"></span>Loading screen</span>
-            <span class="screen-pill" onclick="goToSlide('anim',1)"><span class="dot"></span>Hero</span>
-            <span class="screen-pill" onclick="goToSlide('anim',2)"><span class="dot"></span>Services</span>
-            <span class="screen-pill" onclick="goToSlide('anim',3)"><span class="dot"></span>Footer / CTA</span>
+        </article>
+      </div>
+
+      <!-- ===== Project 02: Animated landing page ===== -->
+      <div class="reveal">
+        <article class="project-card animated spot" aria-labelledby="anim-title">
+          <div class="card-accent"></div>
+          <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="card-gallery" data-gallery data-parallax tabindex="0" role="region" aria-roledescription="carousel" aria-label="Animated Landing Page screenshots">
+            <div class="gallery-track">
+              <div class="gallery-slide"><img src="anim-landing.png" alt="Loading screen" width="1897" height="898" loading="lazy" decoding="async" /></div>
+              <div class="gallery-slide"><img src="anim-hero.png" alt="Hero section" width="1902" height="906" loading="lazy" decoding="async" /></div>
+              <div class="gallery-slide"><img src="anim-services.png" alt="Services" width="1898" height="903" loading="lazy" decoding="async" /></div>
+              <div class="gallery-slide"><img src="anim-footer.png" alt="Footer / CTA" width="1887" height="816" loading="lazy" decoding="async" /></div>
+            </div>
+            <div class="gallery-overlay"></div>
+            <button type="button" class="gallery-btn prev" data-dir="-1" aria-label="Previous screenshot">&#8592;</button>
+            <button type="button" class="gallery-btn next" data-dir="1" aria-label="Next screenshot">&#8594;</button>
+            <div class="gallery-counter" aria-live="polite"><span data-gallery-num>1</span> / <span data-gallery-total>4</span></div>
+            <div class="gallery-nav" data-gallery-dots></div>
           </div>
-          <div class="card-features">
-            <span class="feature">Animated loading sequence</span>
-            <span class="feature">Scroll-triggered reveals</span>
-            <span class="feature">Dark & light sections</span>
-            <span class="feature">Ticker / marquee strip</span>
-            <span class="feature">Responsive layout</span>
-            <span class="feature">Engineering grid aesthetic</span>
+          <div class="card-inner">
+            <div class="card-header">
+              <div class="card-meta">
+                <div class="card-icon" aria-hidden="true">✨</div>
+                <div>
+                  <span class="card-badge">Frontend · Cambridge CEC</span>
+                  <span class="card-num">Project 02</span>
+                </div>
+              </div>
+            </div>
+            <h3 class="card-title" id="anim-title">Animated Landing Page</h3>
+            <p class="card-desc">A visually immersive, motion-driven website for Cambridge Engineering Consultants. Features a dramatic loading sequence, grid-based layouts, scroll-triggered animations, and a dark/light split design — built to impress from the first frame.</p>
+            <div class="card-screens" role="group" aria-label="Jump to screenshot">
+              <button type="button" class="screen-pill" data-goto="0"><span class="dot"></span>Loading screen</button>
+              <button type="button" class="screen-pill" data-goto="1"><span class="dot"></span>Hero</button>
+              <button type="button" class="screen-pill" data-goto="2"><span class="dot"></span>Services</button>
+              <button type="button" class="screen-pill" data-goto="3"><span class="dot"></span>Footer / CTA</button>
+            </div>
+            <div class="card-features">
+              <span class="feature">Animated loading sequence</span>
+              <span class="feature">Scroll-triggered reveals</span>
+              <span class="feature">Dark &amp; light sections</span>
+              <span class="feature">Ticker / marquee strip</span>
+              <span class="feature">Responsive layout</span>
+              <span class="feature">Engineering grid aesthetic</span>
+            </div>
+            <div class="card-divider"></div>
+            <div class="card-tags">
+              <span class="tag">Next.js</span><span class="tag">React</span>
+              <span class="tag">JavaScript</span><span class="tag">CSS Motion</span><span class="tag">Git</span>
+            </div>
           </div>
-          <div class="card-divider"></div>
-          <div class="card-tags">
-            <span class="tag">Next.js</span><span class="tag">React</span>
-            <span class="tag">JavaScript</span><span class="tag">CSS Motion</span><span class="tag">Git</span>
-          </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section" id="skills">
-    <div class="section-header"><span class="section-label">Skills & tools</span><div class="section-line"></div></div>
-    <div class="skills-grid">
-      <div class="skill-item"><span class="skill-icon">⚛️</span><span class="skill-name">React</span></div>
-      <div class="skill-item"><span class="skill-icon">▲</span><span class="skill-name">Next.js</span></div>
-      <div class="skill-item"><span class="skill-icon">⚡</span><span class="skill-name">JavaScript</span></div>
-      <div class="skill-item"><span class="skill-icon">🗄️</span><span class="skill-name">Supabase</span></div>
-      <div class="skill-item"><span class="skill-icon">🐘</span><span class="skill-name">PostgreSQL</span></div>
-      <div class="skill-item"><span class="skill-icon">🌙</span><span class="skill-name">Lua</span></div>
-      <div class="skill-item"><span class="skill-icon">🌿</span><span class="skill-name">Git</span></div>
-      <div class="skill-item"><span class="skill-icon">🐙</span><span class="skill-name">GitHub</span></div>
+  <section class="section" id="skills" aria-labelledby="skills-label">
+    <div class="section-header reveal"><h2 class="section-label" id="skills-label">Skills &amp; tools</h2><div class="section-line"></div></div>
+    <ul class="skills-grid">
+      <li class="skill-item spot reveal" style="--d:0s"><span class="skill-icon" aria-hidden="true">⚛️</span><span class="skill-name">React</span></li>
+      <li class="skill-item spot reveal" style="--d:.04s"><span class="skill-icon" aria-hidden="true">▲</span><span class="skill-name">Next.js</span></li>
+      <li class="skill-item spot reveal" style="--d:.08s"><span class="skill-icon" aria-hidden="true">⚡</span><span class="skill-name">JavaScript</span></li>
+      <li class="skill-item spot reveal" style="--d:.12s"><span class="skill-icon" aria-hidden="true">🗄️</span><span class="skill-name">Supabase</span></li>
+      <li class="skill-item spot reveal" style="--d:.16s"><span class="skill-icon" aria-hidden="true">🐘</span><span class="skill-name">PostgreSQL</span></li>
+      <li class="skill-item spot reveal" style="--d:.2s"><span class="skill-icon" aria-hidden="true">🌙</span><span class="skill-name">Lua</span></li>
+      <li class="skill-item spot reveal" style="--d:.24s"><span class="skill-icon" aria-hidden="true">🌿</span><span class="skill-name">Git</span></li>
+      <li class="skill-item spot reveal" style="--d:.28s"><span class="skill-icon" aria-hidden="true">🐙</span><span class="skill-name">GitHub</span></li>
+      <li class="skill-item spot reveal" style="--d:0s"><span class="skill-icon" aria-hidden="true">📱</span><span class="skill-name">React Native</span></li>
+      <li class="skill-item spot reveal" style="--d:.04s"><span class="skill-icon" aria-hidden="true">📲</span><span class="skill-name">Expo</span></li>
+      <li class="skill-item spot reveal" style="--d:.08s"><span class="skill-icon" aria-hidden="true">🔷</span><span class="skill-name">TypeScript</span></li>
+      <li class="skill-item spot reveal" style="--d:.12s"><span class="skill-icon" aria-hidden="true">🪺</span><span class="skill-name">NestJS</span></li>
+      <li class="skill-item spot reveal" style="--d:.16s"><span class="skill-icon" aria-hidden="true">🔐</span><span class="skill-name">SQLite + SQLCipher</span></li>
+      <li class="skill-item spot reveal" style="--d:.2s"><span class="skill-icon" aria-hidden="true">🕊️</span><span class="skill-name">Swift</span></li>
+      <li class="skill-item spot reveal" style="--d:.24s"><span class="skill-icon" aria-hidden="true">🟣</span><span class="skill-name">Kotlin</span></li>
+      <li class="skill-item spot reveal" style="--d:.28s"><span class="skill-icon" aria-hidden="true">🤖</span><span class="skill-name">Claude Code</span></li>
+    </ul>
+  </section>
+
+  <section class="reveal" id="contact" aria-labelledby="contact-title">
+    <div class="contact-section spot">
+      <div class="contact-left">
+        <h2 id="contact-title">Let's work together.</h2>
+        <p>Open to new opportunities — feel free to reach out.</p>
+      </div>
+      <div class="contact-info">
+        <a href="mailto:moetbakhi@gmail.com" class="contact-item"><span class="contact-item-icon" aria-hidden="true">✉️</span>moetbakhi@gmail.com</a>
+        <a href="tel:+962790686162" class="contact-item"><span class="contact-item-icon" aria-hidden="true">📞</span>+962 790 686 162</a>
+      </div>
     </div>
   </section>
 
-  <div class="contact-section" id="contact">
-    <div class="contact-left">
-      <h2>Let's work together.</h2>
-      <p>Open to new opportunities — feel free to reach out.</p>
-    </div>
-    <div class="contact-info">
-      <a href="mailto:moetbakhi@gmail.com" class="contact-item"><div class="contact-item-icon">✉️</div>moetbakhi@gmail.com</a>
-      <a href="tel:+962790686162" class="contact-item"><div class="contact-item-icon">📞</div>+962 790 686 162</a>
-    </div>
-  </div>
+</main>
 
-  <footer>
-    <div class="footer-copy">Designed & built by <strong>Mohammad Tbakhi</strong></div>
-    <div class="footer-right">Software Engineer · Jordan</div>
-  </footer>
+<footer>
+  <div class="footer-copy">Designed &amp; built by <strong>Mohammad Tbakhi</strong></div>
+  <div class="footer-right">Software Engineer · Jordan</div>
+</footer>
 </div>
-
-<script>
-  const galleries = {
-    erp: { current: 0, total: 6, timer: null },
-    anim: { current: 0, total: 4, timer: null }
-  };
-  function initGallery(id) {
-    const g = galleries[id];
-    const dots = document.getElementById(id + '-dots');
-    for (let i = 0; i < g.total; i++) {
-      const d = document.createElement('button');
-      d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
-      d.onclick = () => goToSlide(id, i);
-      dots.appendChild(d);
-    }
-    updateGallery(id);
-    setInterval(() => changeSlide(id, 1), 3500);
-  }
-  function updateGallery(id) {
-    const g = galleries[id];
-    const track = document.getElementById(id + '-track');
-    const num = document.getElementById(id + '-num');
-    track.style.transform = 'translateX(-' + (g.current * 100) + '%)';
-    num.textContent = g.current + 1;
-    document.querySelectorAll('#' + id + '-dots .gallery-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === g.current);
-    });
-  }
-  function changeSlide(id, dir) {
-    const g = galleries[id];
-    g.current = (g.current + dir + g.total) % g.total;
-    updateGallery(id);
-  }
-  function goToSlide(id, i) { galleries[id].current = i; updateGallery(id); }
-  initGallery('erp');
-  initGallery('anim');
-</script>
 </body>
 </html>
