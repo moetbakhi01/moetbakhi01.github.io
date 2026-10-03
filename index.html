@@ -114,114 +114,54 @@
               </div>
             </div>
 
-            <!--
-              Device stage. The phone screens below are architecture cards built from the
-              stack described above — they are NOT product screenshots.
-              To use real Lifly screenshots, put <img src="lifly-1.png" alt="…"> inside a
-              .screen element (it will fill the screen) and remove its text content.
-            -->
+            <!-- Device stage: Lifly app screens, cycling gently in each phone. -->
             <div class="stage-wrap">
-              <div class="stage" data-parallax role="img" aria-label="Three phone mockups showing Lifly's architecture: Expo and React Native on device, an encrypted SQLite/SQLCipher data layer, and sync with NestJS and PostgreSQL.">
+              <div class="stage" data-parallax role="group" aria-label="Lifly app screens">
                 <span class="stage-glow"></span>
                 <span class="stage-ring r1"></span>
                 <span class="stage-ring r2"></span>
 
                 <div class="layer p-left" style="--depth:10">
                   <div class="float f2">
-                    <div class="phone" data-cycle data-offset="1200">
-                      <span class="phone-notch"></span>
+                    <div class="phone phone-shots" data-cycle data-offset="1200">
+                      <span class="phone-cam"></span>
                       <div class="phone-screen">
-                        <div class="screen is-active">
-                          <span class="s-label">Platform</span>
-                          <strong class="s-title">Native where needed</strong>
-                          <ul class="s-rows">
-                            <li><i style="--c:255,158,203"></i>Swift</li>
-                            <li><i style="--c:183,156,255"></i>Kotlin</li>
-                          </ul>
-                        </div>
-                        <div class="screen">
-                          <span class="s-label">Tooling</span>
-                          <strong class="s-title">Built with</strong>
-                          <ul class="s-rows">
-                            <li><i style="--c:205,245,106"></i>Claude Code</li>
-                            <li><i style="--c:124,156,255"></i>TypeScript</li>
-                          </ul>
-                        </div>
+                        <div class="screen screen-shot is-active"><img src="lifly-splash.webp" alt="Lifly splash screen: Make space for your life" width="853" height="1843" loading="lazy" decoding="async"></div>
+                        <div class="screen screen-shot"><img src="lifly-welcome.webp" alt="Lifly welcome screen: continue with Apple, Google or email" width="853" height="1843" loading="lazy" decoding="async"></div>
                       </div>
-                      <span class="phone-bar"></span>
                     </div>
                   </div>
                 </div>
 
                 <div class="layer p-right" style="--depth:14">
                   <div class="float f3">
-                    <div class="phone" data-cycle data-offset="2400">
-                      <span class="phone-notch"></span>
+                    <div class="phone phone-shots" data-cycle data-offset="2400">
+                      <span class="phone-cam"></span>
                       <div class="phone-screen">
-                        <div class="screen is-active">
-                          <span class="s-label">Targets</span>
-                          <strong class="s-title">iOS &amp; Android</strong>
-                          <ul class="s-rows">
-                            <li><i style="--c:124,156,255"></i>Expo</li>
-                            <li><i style="--c:183,156,255"></i>React Native</li>
-                          </ul>
-                        </div>
-                        <div class="screen">
-                          <span class="s-label">Project</span>
-                          <strong class="s-title">Solo build</strong>
-                          <ul class="s-rows">
-                            <li><i style="--c:205,245,106"></i>Independent</li>
-                            <li><i style="--c:255,158,203"></i>Jan 1, 2026</li>
-                          </ul>
-                        </div>
+                        <div class="screen screen-shot is-active"><img src="lifly-experiences.webp" alt="Lifly Experiences screen: upcoming and recently lived experiences" width="853" height="1843" loading="lazy" decoding="async"></div>
+                        <div class="screen screen-shot"><img src="lifly-plans.webp" alt="Lifly Plans screen: in-progress and completed plans" width="853" height="1843" loading="lazy" decoding="async"></div>
                       </div>
-                      <span class="phone-bar"></span>
                     </div>
                   </div>
                 </div>
 
                 <div class="layer p-center" style="--depth:22">
                   <div class="float f1">
-                    <div class="phone phone-main" data-cycle data-offset="0">
-                      <span class="phone-notch"></span>
+                    <div class="phone phone-shots phone-main" data-cycle data-offset="0">
+                      <span class="phone-cam"></span>
                       <div class="phone-screen">
-                        <div class="screen is-active">
-                          <span class="s-label">On device</span>
-                          <strong class="s-title">Offline-capable</strong>
-                          <ul class="s-rows">
-                            <li><i style="--c:124,156,255"></i>Expo</li>
-                            <li><i style="--c:183,156,255"></i>React Native</li>
-                            <li><i style="--c:205,245,106"></i>TypeScript</li>
-                          </ul>
-                        </div>
-                        <div class="screen">
-                          <span class="s-label">Local data layer</span>
-                          <strong class="s-title">Encrypted</strong>
-                          <svg class="s-lock" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="9" y="21" width="30" height="21" rx="7" fill="rgba(183,156,255,.18)" stroke="currentColor" stroke-width="2.2"/><path d="M16 21v-5a8 8 0 0 1 16 0v5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="24" cy="31" r="3" fill="currentColor"/></svg>
-                          <ul class="s-rows">
-                            <li><i style="--c:183,156,255"></i>SQLite + SQLCipher</li>
-                          </ul>
-                        </div>
-                        <div class="screen">
-                          <span class="s-label">Synchronization</span>
-                          <strong class="s-title">Synced</strong>
-                          <svg class="s-sync" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M38 20a15 15 0 0 0-26-6M10 28a15 15 0 0 0 26 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M12 6v8h8M36 42v-8h-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                          <ul class="s-rows">
-                            <li><i style="--c:255,158,203"></i>NestJS</li>
-                            <li><i style="--c:124,156,255"></i>PostgreSQL</li>
-                            <li><i style="--c:205,245,106"></i>REST / OpenAPI</li>
-                          </ul>
-                        </div>
+                        <div class="screen screen-shot is-active"><img src="lifly-my-year.webp" alt="Lifly My Year screen: day 105 of 365, life areas and what is coming up" width="853" height="1843" loading="lazy" decoding="async"></div>
+                        <div class="screen screen-shot"><img src="lifly-plans.webp" alt="Lifly Plans screen: in-progress and completed plans" width="853" height="1843" loading="lazy" decoding="async"></div>
+                        <div class="screen screen-shot"><img src="lifly-experiences.webp" alt="Lifly Experiences screen: upcoming and recently lived experiences" width="853" height="1843" loading="lazy" decoding="async"></div>
                       </div>
-                      <span class="phone-bar"></span>
                     </div>
                   </div>
                 </div>
 
-                <div class="layer chip-layer c1" style="--depth:34"><span class="chip float f4"><i></i>Offline-capable</span></div>
-                <div class="layer chip-layer c2" style="--depth:28"><span class="chip float f5"><i></i>SQLCipher</span></div>
-                <div class="layer chip-layer c3" style="--depth:30"><span class="chip float f6"><i></i>NestJS</span></div>
-                <div class="layer chip-layer c4" style="--depth:38"><span class="chip float f7"><i></i>iOS + Android</span></div>
+                <div class="layer chip-layer c1" style="--depth:14"><span class="chip float f4"><i></i>Offline-capable</span></div>
+                <div class="layer chip-layer c2" style="--depth:12"><span class="chip float f5"><i></i>SQLCipher</span></div>
+                <div class="layer chip-layer c3" style="--depth:12"><span class="chip float f6"><i></i>NestJS</span></div>
+                <div class="layer chip-layer c4" style="--depth:14"><span class="chip float f7"><i></i>iOS + Android</span></div>
               </div>
             </div>
           </div>
