@@ -1,6 +1,6 @@
 /* ==========================================================================
    Mohammad Tbakhi — portfolio
-   1. Tokens & base      5. Hero & stats        9. Contact & footer
+   1. Tokens & base      5. Hero                9. Contact & footer
    2. Background         6. Project cards       10. Motion helpers
    3. Header / nav       7. Lifly device stage  11. Responsive
    4. Buttons            8. Skills              12. Reduced motion
@@ -148,8 +148,8 @@ button { font: inherit; color: inherit; }
 .btn-secondary { background: rgba(255,255,255,.04); color: var(--text); font-weight: 600; border-color: var(--border); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .btn-secondary:hover { border-color: var(--border-hover); background: rgba(255,255,255,.08); box-shadow: 0 10px 30px -12px rgba(124,156,255,.45); }
 
-/* 5. Hero & stats --------------------------------------------------------- */
-.hero { position: relative; padding: clamp(8rem, 18vw, 11rem) 0 3rem; }
+/* 5. Hero         --------------------------------------------------------- */
+.hero { position: relative; padding: clamp(8rem, 18vw, 11rem) 0 clamp(3.5rem, 9vw, 6rem); }
 .hero > :not(.shapes) { position: relative; z-index: 1; }
 
 .hero-eyebrow {
@@ -192,21 +192,6 @@ button { font: inherit; color: inherit; }
 .sh-dot.d2 { right: 8%; top: 44%; width: 8px; height: 8px; background: var(--accent1); animation-delay: -3s; }
 .sh-star { right: 20%; top: 12%; font-size: 1.4rem; color: var(--accent1); animation: twinkle 4s ease-in-out infinite; }
 .sh-star.s2 { right: 34%; top: 48%; font-size: 1rem; color: var(--accent2); animation-delay: -2s; }
-
-/* stats */
-.stats-bar {
-  display: grid; grid-template-columns: repeat(4, 1fr); margin: 3rem 0 4rem;
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-}
-.stat { position: relative; padding: 1.6rem clamp(1rem, 2.5vw, 2rem); border-right: 1px solid var(--border); transition: background 0.3s; }
-.stat:last-child { border-right: none; }
-.stat:hover { background: rgba(255,255,255,.035); }
-.stat::after { content: ''; position: absolute; left: clamp(1rem, 2.5vw, 2rem); bottom: 0; width: 36px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--accent1), var(--accent2)); transform-origin: left; transition: width 0.4s var(--ease); }
-.stat:hover::after { width: 64px; }
-.stat-num { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 4px; }
-.stat-num.g { color: var(--accent1); }
-.stat-label { font-size: 0.8rem; color: var(--muted); }
 
 /* sections */
 .section { margin-bottom: 5.5rem; }
@@ -457,9 +442,6 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 2.5rem; display: f
   .nav-links a { font-size: 1rem; padding: 14px 16px; border-radius: var(--r-md); }
   .nav-cta { text-align: center; padding: 14px 20px; font-size: 0.95rem; }
 
-  .stats-bar { grid-template-columns: repeat(2, 1fr); }
-  .stat:nth-child(2) { border-right: none; }
-  .stat:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
   .contact-info { margin-left: -8px; }
   .shapes { opacity: .35; }
   .card-features { gap: 6px; }
