@@ -46,11 +46,17 @@
     const links = $$('.nav-links a');
 
     let ticking = false;
+    const setCurrent = (hash) => links.forEach((a) => {
+      if (a.getAttribute('href') === hash) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
         header.classList.toggle('is-scrolled', window.scrollY > 12);
+        // The contact block is short, so at the very bottom of the page it never reaches the spy band.
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) setCurrent('#contact');
         ticking = false;
       });
     };
@@ -62,10 +68,7 @@
       const spy = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          links.forEach((a) => {
-            if (a.getAttribute('href') === '#' + entry.target.id) a.setAttribute('aria-current', 'true');
-            else a.removeAttribute('aria-current');
-          });
+          setCurrent('#' + entry.target.id);
         });
       }, { rootMargin: '-40% 0px -55% 0px' });
       sections.forEach((s) => spy.observe(s));
